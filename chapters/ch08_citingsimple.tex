@@ -1,0 +1,54 @@
+\renewcommand\TheFile{ch08_citingsimple.tex}
+
+\begin{savequote}[15cm]
+  \raggedleft
+\sffamily
+Everything should be made as simple as possible, but not simpler.
+\qauthor{Albert Einstein}
+\end{savequote}
+\chapter{Citing is simple}
+
+Adding proper references and citations to you document can be a real
+burden.
+Not so in \LaTeX\ where you can use the facilities of a kind ``database''
+and many entries available on the web that be added to that database.
+
+This database can be one file, but just as well a set of files, which
+you use to organize you bibliography. The files with these data are
+called .bib files. 
+
+\section{bibtex}
+Using bibtex is easy.
+For instance if your bib contains this entry \cite{bibtexsite}
+\begin{lstlisting}[language=BibTeX]
+@misc{ Nobody06,
+       author = "Nobody Jr",
+       title = "My Article",
+       year = "2006" }
+\end{lstlisting}
+\lstset{language=BibTeX}
+Then citing Nobody~\cite{Nobody06} is easy as
+pie:\lstinline|\cite{Nobody06}|
+
+Then you need to add one compilation step to your normal workflow:
+
+\begin{lstlisting}[language=sh]
+$ latex myarticle
+$ bibtex myarticle
+$ latex myarticle
+$ latex myarticle
+\end{lstlisting}
+
+You can of course easily add that to the makefile introduced in an
+earlier chapter.
+
+Bibtex is the standard you want to use if preparing an article of a
+journal or magazine. The journal typically also prescribes a specific
+bibliography style (defined in a .bst file), which is most likely
+already define for or by that journal
+
+\subsection{Biblatex and biber}
+A bit more modern is biblatex, which has a much simpler definition
+format for bst files. The is a separate \textbf{biber} program to do
+the processing instead of the bibtex run.
+I have used biber in this version of this latex sample.

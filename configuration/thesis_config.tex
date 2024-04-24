@@ -14,16 +14,60 @@
 }
 
 \providecommand\Languages{dutch,ngerman,english}
-\documentclass[a4paper,twoside,11pt]{report}
+\documentclass[a4paper,twosided,11pt]{report}
+% my own Itemize, Enumerate, and Description : a bit less spacy then the default
+\newenvironment{Itemize} {
+  \begin{itemize}{}%
+    \setlength\topsep{0ex}%
+    \setlength\parskip{0ex}%
+    \setlength\partopsep{0em}%
+    \setlength\parsep{0em}%
+    \setlength\itemsep{0em}%
+  }{\end{itemize}
+}
+\newenvironment{Enumerate}{
+  \begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}}
+  {\end{enumerate}
+}
+
+\newenvironment{Description}{
+  \begin{description}
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}}
+  {\end{description}
+}
+
+\usepackage{biblatex} 
 \usepackage[\Languages]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[pdftex,scale={.8,.8}]{geometry}
+\usepackage[a4paper,includemp,pdftex,
+      scale={0.9,0.9},
+      includeheadfoot,
+      bindingoffset=1.5cm]{geometry}
+%\usepackage[pdftex,scale={.8,.8}]{geometry}
 \usepackage{layout}
 \usepackage{fancybox}
 \usepackage[pdftex]{graphicx}
+\usepackage{longtable}
+\usepackage{times}
+\usepackage{varioref}
+% Use multiple references to the same footnote
+
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{wrapfig}
 \usepackage{fancyhdr}
+\usepackage{varioref}
 \usepackage[dvipsnames]{xcolor}
+\usepackage[avantgarde]{quotchap}
+\usepackage{tikz}
+% allow compact lists etc.
+\usepackage{enumitem}
 \usepackage{%
   array,
   booktabs,
@@ -42,17 +86,69 @@
   chngpage,
   colortbl,times
 }
+
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{-}
+\usepackage{listings}
+\lstset{numbers=right} % to get out of the way with document line numbers
+\definecolor{listinggray}{gray}{0.2}
+\definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
+
+\lstset{
+%	backgroundcolor=\color{lbcolor},
+	tabsize=4,
+%	rulecolor=,
+	language=java,
+        basicstyle=\scriptsize,
+        upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily\bfseries\color{Black},
+        keywordstyle=\color{Violet}\bfseries,%[rgb]{0,0,1},
+        commentstyle=\color{Sepia},
+        stringstyle=\color[rgb]{0.627,0.126,0.941}
+}
+\makeatother
+\lstdefinelanguage{BibTeX}
+  {keywords={%
+      @article,@book,@collectedbook,@conference,@electronic,@ieeetranbstctl,%
+      @inbook,@incollectedbook,@incollection,@injournal,@inproceedings,%
+      @manual,@mastersthesis,@misc,@patent,@periodical,@phdthesis,@preamble,%
+      @proceedings,@standard,@string,@techreport,@unpublished%
+      },
+   comment=[l][\itshape]{@comment},
+   sensitive=false,
+  }
+
+\usepackage[final]{pdfpages}
+
 \usepackage[toc,acronym]{glossaries}
-\usepackage[left,pagewise,modulo]{lineno}
+\usepackage[pagewise,mathlines,displaymath]{lineno}
+\setpagewiselinenumbers
+\modulolinenumbers[3]
+\renewcommand{\linenumberfont}{\normalfont\tiny\color{gray}}
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
   colorlinks=true,
-  linkcolor=blue,
-  filecolor=magenta,
+  linkcolor=BlueViolet,
+  filecolor=DarkOrchid,
   citecolor=PineGreen,
    urlcolor=RoyalPurple,
 }
+\usepackage{cleveref}[2012/02/15]
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+\addtolength\headwidth\marginparwidth
+\addtolength\headwidth\marginparsep
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{.5\baselineskip}
 
@@ -63,7 +159,7 @@
 
 \input{configuration/macros}
 
-\usepackage{natbib}
+%\usepackage{natbib}
 \usepackage[nottoc]{tocbibind}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
@@ -128,4 +224,75 @@
 \providecommand\externalexpert{\DefInfo{externalexpert}}
 \providecommand\hasnda{\DefInfo{hasnda}}
 
+% This macro '\define' puts the argument in em 
+% and in boldface in the margin.
+\providecommand{\define}[1]{% 1 argument
+  \mbox{}{\textit{#1}}% italics or em
+  \marginpar{\raggedright% no adjust
+    \bfseries\hspace{0pt}#1}% bold
+} % end of macro
+\newcommand\Code[1]{\textbf{\texttt{#1}\ }}
+\newcolumntype{g}[1]{%
+    >{\raggedright\arraybackslash}%
+    p{#1}%
+}
+
+\newcommand\itemcell[1]{%
+  %\mbox{% uncomment for debug 
+  \begin{minipage}[t]{\linewidth}%
+      \begin{itemize}[leftmargin=3.5ex]%
+        #1
+      \end{itemize}%
+  \end{minipage}\vspace{.4\baselineskip}%
+  %}% uncomment
+}
+
+
+\newcommand\headcell[1]{%
+  \begin{minipage}[c]{\linewidth}
+    \vspace{.2\baselineskip}%
+    \raggedright%
+    \textbf{#1}
+  \end{minipage}\vspace{.4\baselineskip}%
+}
+
+\newcommand\firstcell[1]{%
+  \cellcolor{Gray}%
+  \begin{minipage}[c]{\linewidth}%
+    \vspace{.2\baselineskip}%
+    \raggedright%
+    \textbf{#1}
+  \end{minipage}\vspace{.4\baselineskip}%
+}
+
+\newcommand\textcell[1]{%
+  \fbox{%
+    \begin{minipage}[t]{\linewidth}%
+      \raggedright%
+      #1
+  \end{minipage}}\vspace{.4\baselineskip}%
+}
+\newlength{\BulletSize}
+\setlength{\BulletSize}{1.5ex}
+\definecolor{Gray}{gray}{0.9} % color used in table borders
+\newlength{\TabColumnWidth} % for tables
+\newcommand\CheckMarkGreen[1]{\includegraphics[height=#1]{images/Check_Green_White.pdf}\hspace{2pt}}
+\newcommand\CMark{\raisebox{-.1\BulletSize}{\CheckMarkGreen{\BulletSize}}}
+\newcommand\CrossMarkRed[1]{\includegraphics[height=#1]{images/Cross_red_circle.pdf}\hspace{2pt}}
+\newcommand\XMark{\raisebox{-.1\BulletSize}{\CrossMarkRed{\BulletSize}}}
+\newcommand\WarningMarkYellow[1]{\includegraphics[height=#1]{images/Alert_Yellow_White.pdf}\hspace{2pt}}
+\newcommand\WMark{\raisebox{-.1\BulletSize}{\WarningMarkYellow{\BulletSize}}}
+\newcommand\FirstCell[1]{\cellcolor{Gray}\thead{#1}}
+\newcommand\URLIcon[1]{\includegraphics[height=#1]{images/URL.pdf}\hspace{2pt}}
+\newcommand\UMark{\raisebox{-.1\BulletSize}{\URLIcon{\BulletSize}}}
+\newcommand\itemC{\item[\CMark]}
+\newcommand\itemX{\item[\XMark]}
+\newcommand\itemW{\item[\WMark]}
+\newcommand\itemU{\item[\UMark]}
+\newcommand\MyURL[2]{\url{#1}{\UMark #1}}
+\usepackage[avantgarde]{quotchap}
+\renewcommand\chapterheadstartvskip{\vspace*{-5\baselineskip}}
+
+\definecolor{codegray}{gray}{0.9}
+\newcommand{\code}[1]{\colorbox{codegray}{\texttt{#1}}}
 \InputIfFileExists{IncludeOnly.tex}{}{}

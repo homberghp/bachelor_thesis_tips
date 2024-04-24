@@ -10,11 +10,17 @@
 \title{\documentname}
 \author{\studentname}
 \date{\place, \today}
+\bibliography{references,SEN2Bibliography}
 
 % remember to provide data for information page in infopage.tex
+% add glossary
+\makeglossaries
+\setglossarystyle{long3colheader}
+\input{partials/glossary.tex}
 
 \begin{document}
-\IfFileExists{IncludeOnly.tex}{}{%
+\setpagewiselinenumbers
+
 \maketitle
 
 % Define roman numbering for the pages that do not belong to the main content
@@ -29,7 +35,6 @@
 \input{partials/statementofauthenticity}
 %% usual tables like table of contents, table of figures etc.
 \input{partials/preambletables}
-}
 
 % Define arabic numbering for the pages that belong to the main content
 \pagenumbering{arabic} 
@@ -38,28 +43,37 @@
 \pagestyle{chapter-header-style}
 
 % Include chapters
-\include{chapters/chapter_1}
-\include{chapters/chapter_2}
-\include{chapters/chapter_3}
-\include{chapters/chapter_4}
-\include{chapters/chapter_5}
-\include{chapters/chapter_6}
-\include{chapters/chapter_7}
-\include{chapters/tips_and_tricks}
-\include{partials/self_reflection}
+\include{chapters/ch01_intro}
+\include{chapters/ch02_motivation}
+\include{chapters/ch03_mathematics}
+\include{chapters/ch04_graphics}
+\include{chapters/ch05_codelisting}
+\include{chapters/ch06_programmedgraphics}
+\include{chapters/ch07_poser}
+\include{chapters/ch08_citingsimple}
+%\include{chapters/ch09_citingsimple}
+\include{chapters/ch09_tips_and_tricks}
+\include{chapters/ch10_tablestables}
 
 %% supress post file when not required
-\IfFileExists{IncludeOnly.tex}{}{%
+%% \IfFileExists{IncludeOnly.tex}{}{%
 
-% Set bibliography style to Harvard
-\bibliographystyle{abbrvnat}
+%% % Set bibliography style to Harvard
+%% %\bibliographystyle{abbrvnat}
 
 % Add the bibliography at the end
-\bibliography{references}
+\addcontentsline{toc}{chapter}{References}
+\printbibliography[title={\color{gray}References}]
 
 % Add appendix
 \begin{appendices}
-	\include{partials/appendix}
+  \renewcommand{\thesection}{\Alph{section}}
+  \appendix
+  \markboth{Appendices}{}
+  \addcontentsline{toc}{part}{Appendices}
+  \include{appendix/macros}
+  \include{appendix/pdfpages}
+
 \end{appendices}
-}
+%}
 \end{document}
