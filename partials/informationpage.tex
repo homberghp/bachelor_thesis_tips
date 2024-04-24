@@ -1,0 +1,70 @@
+\def\InformationPageTitle{Information Page}
+\providecommand\InformationPageTitle{Information Page}
+\InputIfFileExists{infopage.txt}{%
+  \def\InfoMissingWarning{}
+}{%
+  \def\InfoMissingWarning{
+    
+    {\centering \Large \bf The information in this page is not correct, please
+      provide the information in the document infopage.txt in the root of this TeX project.}
+
+    You can find an example infopage.text file name infopage.txt-example. One approach is copy and edit the copy.
+  }
+}
+\section*{\InformationPageTitle}
+\InfoMissingWarning
+%\section*{\InformationPageTitle}
+%% provide default values
+
+
+Fontys Hogeschool Techniek en Logistiek\\
+Postbus 141, 5900 AC Venlo
+
+\vspace*{1cm}
+\noindent
+{\centering \Large\bfseries
+  \documentname
+
+}
+
+\vspace{1cm}
+
+\begin{infoblock}
+Name of student: & \studentname\\
+Student number: & \snumber\\
+Course: & \course\\
+Period: & \period\\
+\end{infoblock}
+
+\begin{infoblock}
+Company name: & \companyname\\
+Address: & \companyaddress\\
+Postcode, City: & \companypostcodecity\\
+Country: & \companycountry\\
+\end{infoblock}
+
+\begin{infoblock}
+Company coach: & \companycoach\\
+Email: & \texttt{\href{mailto:\companycoachmail}{\companycoachmail}}\\
+University coach: & \universitytutor\\
+Email: & \texttt{\href{mailto:\universitytutormail}{\universitytutormail}}\\
+\end{infoblock}
+
+\ifx\examiner\empty
+\relax
+\else
+\ifx\externalexpert\empty
+\relax
+\else
+\begin{infoblock}
+  Examinator: & \examiner\\
+  External domain expert: & \externalexpert\\
+\end{infoblock}
+\fi
+\fi
+
+
+\begin{infoblock}
+Non-disclosure agreement: & \hasnda
+\end{infoblock}
+\clearpage

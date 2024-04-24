@@ -1,0 +1,65 @@
+%% for a german thesis use english,ngerman, the last is default.
+%% for dutch use \def\Languages{english,dutch}
+%% for English use \def\Languages{english},
+%% or \def\Languages{english,british} if you prefer british as English style
+\def\Languages{ngerman,dutch,english}
+\input{configuration/thesis_config}
+%\includeonly{chapters/chapter_1}
+% provide data for title page
+\IfFileExists{linenumberingOn}{\linenumbers}{}
+\title{\documentname}
+\author{\studentname}
+\date{\place, \today}
+
+% remember to provide data for information page in infopage.tex
+
+\begin{document}
+\IfFileExists{IncludeOnly.tex}{}{%
+\maketitle
+
+% Define roman numbering for the pages that do not belong to the main content
+\pagenumbering{roman} 
+
+% Include all the pre-chapters
+\input{partials/informationpage}
+\include{partials/preface}
+\include{partials/summary_en}
+\include{partials/summary_nl_de}
+
+\input{partials/statementofauthenticity}
+%% usual tables like table of contents, table of figures etc.
+\input{partials/preambletables}
+}
+
+% Define arabic numbering for the pages that belong to the main content
+\pagenumbering{arabic} 
+
+% Define page heading style
+\pagestyle{chapter-header-style}
+
+% Include chapters
+\include{chapters/chapter_1}
+\include{chapters/chapter_2}
+\include{chapters/chapter_3}
+\include{chapters/chapter_4}
+\include{chapters/chapter_5}
+\include{chapters/chapter_6}
+\include{chapters/chapter_7}
+\include{chapters/tips_and_tricks}
+\include{partials/self_reflection}
+
+%% supress post file when not required
+\IfFileExists{IncludeOnly.tex}{}{%
+
+% Set bibliography style to Harvard
+\bibliographystyle{abbrvnat}
+
+% Add the bibliography at the end
+\bibliography{references}
+
+% Add appendix
+\begin{appendices}
+	\include{partials/appendix}
+\end{appendices}
+}
+\end{document}

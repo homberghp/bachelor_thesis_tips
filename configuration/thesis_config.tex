@@ -1,0 +1,131 @@
+%----------------------------------------------------------
+% DO NOT TOUCH THIS FILE UNLESS YOU KNOW WHAT YOU ARE DOING
+%----------------------------------------------------------
+\InputIfFileExists{infopage.txt}{%
+  \def\InfoMissingWarning{}
+}{%
+  \def\InfoMissingWarning{
+    
+    {\centering \Large \bf The information in this page is not correct, please
+      provide the information in the document infopage.txt in the root of this TeX project.}
+
+    You can find an example infopage.text file name infopage.txt-example. One approach is copy and edit the copy.
+  }
+}
+
+\providecommand\Languages{dutch,ngerman,english}
+\documentclass[a4paper,twoside,11pt]{report}
+\usepackage[\Languages]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex,scale={.8,.8}]{geometry}
+\usepackage{layout}
+\usepackage{fancybox}
+\usepackage[pdftex]{graphicx}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{%
+  array,
+  booktabs,
+  dcolumn,
+  rotating,
+  shortvrb,
+  units,
+  url,
+  lastpage,
+  longtable,
+  lscape,
+  multirow,
+  amssymb,
+  amsmath,
+  float,
+  chngpage,
+  colortbl,times
+}
+\usepackage[toc,acronym]{glossaries}
+\usepackage[left,pagewise,modulo]{lineno}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  citecolor=PineGreen,
+   urlcolor=RoyalPurple,
+}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.5\baselineskip}
+
+\usepackage{lipsum}
+\usepackage{metainfo}
+\providecommand{\MineOnlyStart}{}
+\providecommand{\MineOnlyEnd}{}
+
+\input{configuration/macros}
+
+\usepackage{natbib}
+\usepackage[nottoc]{tocbibind}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{adjustbox}
+\usepackage[toc,page]{appendix}
+
+%\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+% this alters "before" spacing (the second length argument) to 0
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+\fancypagestyle{chapter-header-style}{
+	\fancyhead[LE,RO]{\thepage}
+	\fancyhead[RE,LO]{\chaptername\ \thechapter\ --\ \leftmark}
+}
+
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}}
+
+\addto\captionsdutch{%
+  \renewcommand\appendixname{Bijlagen}
+  \renewcommand\appendixpagename{Bijlage}
+  \renewcommand{\refname}{Referenties}
+  \renewcommand{\bibname}{Referenties}
+}
+\addto\captionsenglish{%
+  \renewcommand\appendixname{Appendices}
+  \renewcommand\appendixpagename{Appendix}
+  \renewcommand{\refname}{References}
+  \renewcommand{\bibname}{References}
+}
+\addto\captionsgerman{%
+  \renewcommand\appendixname{Anhänge}
+  \renewcommand\appendixpagename{Anhang}
+  \renewcommand{\refname}{Verweise}
+  \renewcommand{\bibname}{Verweise}
+}
+%% to speed up building, include only what is in ./IncludeOnly.tex
+\providecommand\DefInfo[1]{ define \textbackslash{}#1 in file ``./infopage.txt''}
+\providecommand\documentname{\DefInfo{documentname}}
+\providecommand\studentname{\DefInfo{studentname}}
+\providecommand\place{\DefInfo{place}}
+\providecommand\snumber{\DefInfo{snummer}}
+\providecommand\course{\DefInfo{course}}
+\providecommand\period{\DefInfo{period}}
+\providecommand\companyname{\DefInfo{CompanyName}}
+\providecommand\companyaddress{\DefInfo{CompanyAddress}}
+\providecommand\companypostcodecity{\DefInfo{companypostcodecity}}
+\providecommand\companycountry{\DefInfo{companycountry}}
+\providecommand\companycoach{\DefInfo{companycoach}}
+\providecommand\companycoachmail{\DefInfo{companycoachmail}}
+\providecommand\universitytutor{\DefInfo{universitytutor}}
+\providecommand\universitytutormail{\DefInfo{universitytutormail}}
+\providecommand\examiner{\DefInfo{examiner}}
+\providecommand\externalexpert{\DefInfo{externalexpert}}
+\providecommand\hasnda{\DefInfo{hasnda}}
+
+\InputIfFileExists{IncludeOnly.tex}{}{}
