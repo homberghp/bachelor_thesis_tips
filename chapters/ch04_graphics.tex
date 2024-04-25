@@ -53,6 +53,7 @@ If latex cannot fit the diagram on this page
 
 %\clearpage%to show headers
 \section{PDF from an UML package} 
+\label{sec:pdffromuml}
 % Note how this varioref expands to
 % something like on the next page.
 % and using a wrapfigure
@@ -80,15 +81,6 @@ This ensures that the so called bounding box does not cut of any lines
 you want in your picture. Sometimes it is necessary to give these
 tools a helping hand with inkscape, that is do a bit of tinkering to
 get all details right. Or with \Code{pdfcrop} which typically comes with your \LaTeX installion.
-% \begin{figure}[htbp]
-%   \centering
-%   \includegraphics[width=.6\textwidth]{images/factory}
-%   \caption[A class diagram by Umbrello]{A class diagram by Umbrello, saved as svg and processed
-%     with inkscape.}
-%   \label{fig:factory}
-% \end{figure}
-
-% \clearpage
 
 \begin{figure}[htbp]
   \includegraphics[width=\linewidth]{images/ClassDiagram1.png}
@@ -117,6 +109,7 @@ Look on the next page how it is done properly.
 \end{figure}
 
 \subsection{Stylish UML Class diagram}
+\label{sec:stylish}
 In the diagramin figure~\vref{fig:cashregistertest} above has style and uses functional colours which are simply explained in a legend.
 
 Good style in a class diagram means:

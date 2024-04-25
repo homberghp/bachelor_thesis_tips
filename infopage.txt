@@ -1,5 +1,5 @@
 %% set the proper data here.
-\def\documentname{My Bachelor Thesis}
+\def\documentname{Towards a better Bachelor Thesis}
 \def\studentname{Pietje Bell}
 \def\snumber{1234567}
 \def\place{Venlo}

@@ -30,7 +30,6 @@
 \input{partials/informationpage}
 \include{partials/preface}
 \include{partials/summary_en}
-\include{partials/summary_nl_de}
 
 \input{partials/statementofauthenticity}
 %% usual tables like table of contents, table of figures etc.
@@ -66,14 +65,16 @@
 \printbibliography[title={\color{gray}References}]
 
 % Add appendix
-\begin{appendices}
+%\begin{appendices}
   \renewcommand{\thesection}{\Alph{section}}
   \appendix
+  \def\chaptername{Appendix}
   \markboth{Appendices}{}
   \addcontentsline{toc}{part}{Appendices}
   \include{appendix/macros}
+  \include{appendix/includelistings}
   \include{appendix/pdfpages}
 
-\end{appendices}
+%\end{appendices}
 %}
 \end{document}

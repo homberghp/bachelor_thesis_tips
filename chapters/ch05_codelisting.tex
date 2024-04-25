@@ -1,6 +1,6 @@
 \def\TheFile{ch05_codelisting.tex}
 \chapter{Listings and Code Documentation}
-
+\label{chap:listings}
 Just as much as you can have bad style when including diagrams, the same can happen if
 you want to show code snippets.
 
@@ -21,7 +21,7 @@ See mydefs.tex for the inclusion.
 
 \lstset{%first some settings
   numbers=right, % number the lines
-  numberstyle={\tiny\color{red}},frameround=tttt,framerule=1pt,rulesepcolor=\color{gray},
+  numberstyle={\tiny\color{gray}},frameround=tttt,framerule=1pt,rulesepcolor=\color{gray},
   framexrightmargin=5mm
 }
 
@@ -56,7 +56,7 @@ And again, you can zoom in and select text.
 
 \lstinputlisting[language=java, firstline=1,firstnumber=1,
         lastline=39,numbers=right,basicstyle={\tiny\ttfamily},
-        caption={The proper way to show your code.}
+        caption={The proper way to show your code.\label{lst:proper}}
         ]{code/DAO.java}
 
 
