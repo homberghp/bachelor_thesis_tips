@@ -42,7 +42,7 @@ To keep the reader awake, and more importantly: interested, and apreciative of y
 \paragraph{Use a storyline} Both in your report and in your presentation. If you invent a persona anyway, use him or her as the protagonist to tell the store, and use him/her to explain stuff.
 The story need not necessarily be true to the actual chronology of the time spent in your bachelor project, but should be logical story, in which you take the reader along to explain your reasoning, the decisions you made and why, etc.
 
-You protagonist may not be useful in all the parts, but might be very handy to explain the problem, the assignment and how he or she can you the fruits of your labor.
+You protagonist may not be useful in all the parts, but might be very handy to explain the problem, the assignment and how he or she can use the fruits of your labor.
 
 Start with the \textbf{company} and every detail of the company that is relevant to the project.
 Then continue with the \textbf{context} of the problem, exactly as much as you need to explain the next logical thing: the \textbf{problem} that you have been asked to solve. Followed by the \textbf{assignment}.
@@ -51,24 +51,23 @@ If in any paragraph that you wrote you or a reviewer notices that you have to ex
 that could have been explained in an earlier part, do not repeat any of that earlier part,
 not even by saying 'as you can/have read in ..', but instead revise the earlier part so the context, the problem, the assignment etc can be understood in one flow.
 
-As an example, If you need to explain what a typical customer will do with the product, then we expect that you have explaind product and customer in the company description or context. 
+As an example, If you need to explain what a typical customer will do with the product, then we expect that you have explained product and customer in the company description or context.
 
-You should use the reader as if he/she is a single pass compiler. What has not been defined before cannot be used here. Forward references (like in as you will see in ...) are \textbf{not allowed}. It is a waste of words, in particular when the structure, and thus the table of content is aby good.
-That will keep the reader in the flow, because he does not have to page forward or backward, and if the story is short enough, the reader will be able to pull through without being bored to death.
+You should assume the reader to be a single pass compiler (like \LaTeX itselves or the C-compiler). What has not been defined before cannot be used here. Forward references (like in as you will see in ...) are \textbf{not allowed}. It is a waste of words, in particular when the structure, and thus the table of content is any good.
+In this way you will keep the reader in the flow, because he does not have to page forward or backward, and if the story is short enough, the reader will be able to pull through without being bored to death.
 
-Also: By NOT repeating stuff, you have no chance of inconsistencies.
+Also: By NOT repeating stuff, you have no chance of inconsistencies, because every paragraph is the only source of its truth.
 
 \section{TLDR;}
 
 In the remainder of this document you will see some tips and tricks to use when you write your report in \LaTeX,
 but the above and some things in the use of graphics also apply when you use \textbf{word} or some other text processing application. The quality of your report should not suffer from your choice of tools.
-So read those chapters as well.
+So read those chapters as well. In particular when it is about adding pictures, listings, and tables.
 
 \section{Use a better technology}
 One of the standards for documentation in open source and hence in
 Linux land is \LaTeX, a text processing package. \LaTeX\ is available
-for free and available with all Linux distributions and installed in
-the Lab.
+for free and available with all Linux distributions and can be installed on Windows and Max OSX just as easily.
 
 \TeX\ is the machinery of \LaTeX\ and was defined in the \TeX\ book
 \cite{texbook} and implemented by
@@ -119,9 +118,9 @@ some OS-es do not distinguish between upper and lower case. You may of
 course brake this rule if the files are program things like
 Java source files.
 
-%% \subsection{Hints for informatics (use version control)}
-%% In software projects, versioning is important. \LaTeX\ and \textsc{SubVersion}
-%% work nicely together here.
+\subsection{Hints for informatics (use version control)}
+In software projects, versioning is important. \LaTeX\ and \textsc{GIT}
+work nicely together here.
 %% By using the \LaTeX\ package \texttt{svn-multi} you can have svn+
 %% latex insert meta information about your files in the produced output,
 %% for instance in the page footers, as in this document.
@@ -139,8 +138,9 @@ Java source files.
 %%   Revision HeadURL Header"  filename
 %% \end{lstlisting}
 %% }
-%% To keep these version codes up to date, first check if your \LaTeX\  files compile,
-%% then check them in and do your final \LaTeX\  run. 
+
+To keep these version codes up to date, first check if your \LaTeX\  files compile,
+then add and commit them and do your final \LaTeX\  run. 
 
 %% To make the version codes of the files appear on the bottom line, have
 %% a look at the mydefs.tex file where the fancy headers and footers are defined.
