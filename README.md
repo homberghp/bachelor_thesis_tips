@@ -76,4 +76,4 @@ you latex commands inside the container. The Makefile in this directory shows ho
 ## Optional configuration
 You may enable line numbering by creating an empty file in the root directory named `linenumberingOn.tex`.
 
-You can find the resulting [main.pdf](blob/master/docs/main.pdf) in the docs directory.
+You can find the resulting [main.pdf](docs/main.pdf) in the docs directory.
