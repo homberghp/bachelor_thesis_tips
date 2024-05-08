@@ -58,7 +58,6 @@ If latex cannot fit the diagram on this page
 % something like on the next page.
 % and using a wrapfigure
 \begin{wrapfigure}{r}{.4\textwidth}
-
   \includegraphics[width=.4\textwidth]{images/doorsystem.pdf}
   \caption{A class diagram made with Visual Paradigm}
   \label{fig:classdiagram}
@@ -101,11 +100,16 @@ The picture above is wrong on many fronts.
 
 Look on the next page how it is done properly.
 \clearpage
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/HWIO.pdf}
+	\caption{UML made with Visual Paradigm, export to svg and then adapted with inkscape and end exported to pdf}
+\end{figure}
 
 \begin{figure}[htbp]
   \includegraphics[width=\linewidth]{images/perishablesales.pdf}
   \caption{\label{fig:cashregistertest}Vector format (exported as pdf), with functional colour and a legend}
 \end{figure}
+
 
 \subsection{Stylish UML Class diagram}
 \label{sec:stylish}

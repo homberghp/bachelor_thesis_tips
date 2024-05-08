@@ -41,7 +41,23 @@
   {\end{description}
 }
 
-\usepackage[style=alphabetic]{biblatex}
+%% citation and bibliography style.
+%% This style depends on 'sortname' and 'shorthand' fields in the bib file.
+%% This gives you control on what is shown in the labels.
+%% If you ommit the shorthand, the styles fall back to a numeric label
+\usepackage[
+backend=biber,
+hyperref=true,
+backref=true,
+]{biblatex}
+\DefineBibliographyStrings{english}{
+  backrefpage={cited on p.},
+  backrefpages={cited on pp.}
+}
+% end citation bibliography style.
+
+
+% support multiple languages.
 \usepackage[\Languages]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -141,7 +157,7 @@
   linkcolor=BlueViolet,
   filecolor=DarkOrchid,
   citecolor=PineGreen,
-   urlcolor=RoyalPurple,
+  urlcolor=RoyalPurple,
 }
 \usepackage{cleveref}[2012/02/15]
 \crefformat{footnote}{#2\footnotemark[#1]#3}

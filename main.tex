@@ -10,7 +10,9 @@
 \title{\documentname}
 \author{\studentname}
 \date{\place, \today}
-\bibliography{references,SEN2Bibliography}
+\addbibresource{references.bib}
+% \addbibresource{SEN2Bibliography.bib}
+% \addbibresource{biblatex-examples.bib}
 
 % remember to provide data for information page in infopage.tex
 % add glossary
@@ -30,10 +32,9 @@
 \input{partials/informationpage}
 \include{partials/preface}
 \include{partials/summary_en}
-
-\input{partials/statementofauthenticity}
+\include{partials/statementofauthenticity}
 %% usual tables like table of contents, table of figures etc.
-\input{partials/preambletables}
+\include{partials/preambletables}
 
 % Define arabic numbering for the pages that belong to the main content
 \pagenumbering{arabic} 
@@ -55,12 +56,9 @@
 %% supress post file when not required
 %% \IfFileExists{IncludeOnly.tex}{}{%
 
-%% % Set bibliography style to Harvard
-%% %\bibliographystyle{abbrvnat}
-
 % Add the bibliography at the end
 \addcontentsline{toc}{chapter}{References}
-\printbibliography[title={\color{gray}References}]
+\printbibliography[title={References}]
 
 % Add appendix
 %\begin{appendices}

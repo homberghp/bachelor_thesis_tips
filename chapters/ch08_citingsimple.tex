@@ -17,26 +17,35 @@ This database can be one file, but just as well a set of files, which
 you use to organize you bibliography. The files with these data are
 called .bib files. 
 
-\section{bibtex}
-Using bibtex is easy.
-For instance if your bib contains this entry \cite{bibtexsite}
+\section{Bib\LaTeX}
+Bibtex is the traditional way of using citations and creating a bibliography, but its
+role has all but been taken over by the more modern \BibLaTeX.
+Both are equally simple to use for the most common use. For each reference that you want to use in your report
+you should have a definition like below. Look in the \texttt{references.bib} file for more examples.
+
+For instance if your bib contains this entry for \texttt{Nobody}:
 \begin{lstlisting}[language=BibTeX]
 @misc{ Nobody06,
-       author = "Nobody Jr",
-       title = "My Article",
-       year = "2006" }
+   author = "Nobody Jr",
+   shorthand={Nobody},
+   sortname={nobody},
+   title = "My Article",
+   year = "2006"
+}
 \end{lstlisting}
 \lstset{language=BibTeX}
-Then citing Nobody~\cite{Nobody06} is easy as
-pie:\lstinline|\cite{Nobody06}|
+Then citing Nobody~\parencite{Nobody06} is easy as
+pie:\lstinline|\parencite{Nobody06}|
+
+textcite ``\textcite{Nobody06}'', cite \cite{Nobody06}, parencite \parencite{Nobody06}
 
 Then you need to add one compilation step to your normal workflow:
 
 \begin{lstlisting}[language=sh]
-$ latex myarticle
-$ bibtex myarticle
-$ latex myarticle
-$ latex myarticle
+$ pdflatex myarticle
+$ biber myarticle
+$ pdflatex myarticle
+$ pdflatex myarticle
 \end{lstlisting}
 
 You can of course easily add that to the makefile introduced in an
@@ -47,8 +56,53 @@ journal or magazine. The journal typically also prescribes a specific
 bibliography style (defined in a .bst file), which is most likely
 already define for or by that journal
 
-\subsection{Biblatex and biber}
+\subsection{BibLaTeX and Biber}
+
 A bit more modern is biblatex, which has a much simpler definition
 format for bst files. The is a separate \textbf{biber} program to do
 the processing instead of the bibtex run.
-I have used biber in this version of this latex sample.
+I have used biber in this version of this latex sample. \parencite{biblatexsite}.
+
+\section{What style to choose}
+
+It appears that Fontys Venlo promotes the so called Harvard style, but that has three issues:
+\begin{enumerate*}
+\item It is not well defined.
+\item Finding a reference in the bibliography is not trivial, because the style does not use the label.
+  in the bibliography, making it less useable or at least reader friendly.
+\item It is NOT what Fontys Venlo uses internally.
+\end{enumerate*}
+
+The official 'harvard'-like style that is promoted by the the slides on canvas
+produces the bibliography in ~\vref{fig:harvard}, which is actually authoryear.
+
+\begin{figure}
+  \shadowbox{\parbox{\linewidth}{
+  \centering      \includegraphics{images/harvardreferences.pdf}}}
+  \caption{\label{fig:harvard}No labels that are easily matched with the references in the report text.}
+\end{figure}
+
+The style that Fontys uses internally can be emulated with the
+settings used in this report and with a bibliography that uses the
+fields \texttt{shorthand} and \texttt{shortname} like below
+in~\vref{bib:companion} to give the author control on both what is
+used in either citation and the bibliography and also the sorting
+applied in the bibliography. This provides the best of both worlds.
+
+
+\begin{lstlisting}[language=BibTeX,caption={\label{bib:companion}Using \texttt{shorthand} for label and \texttt{sortname}for sorting}]
+  @BOOK{latexcompanion,
+   author = "Frank Mittelbach and Michel Goossens",
+   shorthand={Companion, 2004},
+   sortname={companion},
+   title = "The {\LaTeX }Companion Second Edition",
+   publisher = "Addison-Wesley",
+   year = 2004
+}
+\end{lstlisting}
+
+
+As most documentation, with a complete installation, you may want to
+use the command \texttt{texdoc biblatex} to be presented with the
+documentaton of \textbf{biblatex} in this case in the default pdf viewer.
+
