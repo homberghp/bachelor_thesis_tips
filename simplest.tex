@@ -1,0 +1,106 @@
+\documentclass[12pt,a4paper,dvipsnames]{article}
+
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage[colorlinks=true, citecolor=blue]{hyperref}
+
+\usepackage[
+%style=authoryear,
+backend=biber,
+hyperref=true,
+backref=true,
+]{biblatex}
+
+\usepackage{listings}
+%\addbibresource{biblatex-examples.bib}
+\addbibresource{references.bib}
+
+% here the doc begins
+% \DeclareCiteCommand{\cite}
+%   {\usebibmacro{prenote}}
+%   {\usebibmacro{citeindex}%
+%    \printtext[bibhyperref]{\usebibmacro{cite}}}
+%   {\multicitedelim}
+%   {\usebibmacro{postnote}}
+
+% \DeclareCiteCommand*{\cite}
+%   {\usebibmacro{prenote}}
+%   {\usebibmacro{citeindex}%
+%    \printtext[bibhyperref]{\usebibmacro{citeyear}}}
+%   {\multicitedelim}
+%   {\usebibmacro{postnote}}
+
+% \DeclareCiteCommand{\parencite}
+%   {\usebibmacro{prenote}}
+%   {\usebibmacro{citeindex}%
+%    \printtext[bibhyperref]{[\usebibmacro{cite}]}}
+%   {\multicitedelim}
+%   {\usebibmacro{postnote}}
+
+% \makeatletter
+% \newrobustcmd*{\parentexttrack}[1]{%
+%   \begingroup
+%   \blx@blxinit
+%   \blx@setsfcodes
+%   \blx@bibopenparen#1\blx@bibcloseparen
+%   \endgroup}
+
+% \AtEveryCite{%
+%   \let\parentext=\parentexttrack%
+%   \let\bibopenparen=\bibopenbracket%
+%   \let\bibcloseparen=\bibclosebracket}
+% \makeatother
+\DefineBibliographyStrings{english}{
+   backrefpage={cited  p.},
+%  backrefpage={},
+   backrefpages={cited pp.}
+ % backrefpages={}
+}
+
+\begin{document}
+	
+\section*{What it looks like}
+
+Note that below, in the textcite citation variant, you see that cite command produces more that just the citation label.
+
+\begin{itemize}
+\item Simple cite looks like this: \cite{WikiBooks:2024:LaTeX}
+  \begin{itemize}
+  \item made with {\color{PineGreen}\tt{}\lstinline#Simple cite looks like this: \cite{WikiBooks:2024:LaTeX}#}
+  \end{itemize}
+\item Parencite looks like this: \parencite{WikiBooks:2024:LaTeX}
+  \begin{itemize}
+  \item made with {\color{PineGreen}\tt{}\lstinline#Parencite looks like this: \parencite{WikiBooks:2024:LaTeX}#}
+  \end{itemize}
+\item Textcite looks like this: ``\textcite{WikiBooks:2011:LaTeX}''
+  \begin{itemize}
+  \item made with {\color{PineGreen}\tt{}\lstinline#Textcite looks like this: ``\textcite{WikiBooks:2011:LaTeX}''#}
+  \end{itemize}
+\item Simple citation looks like this \cite{latexcompanion}.
+  \begin{itemize}
+  \item  made with {\color{PineGreen}\tt{}\lstinline#Simple citation looks like this \cite{latexcompanion}.#}
+  \end{itemize}
+\item Parencite looks like this \parencite{latexcompanion}.
+  \begin{itemize}
+  \item  made with {\color{PineGreen}\tt{}\lstinline#Parencite  looks like this \parencite{latexcompanion}.#}
+  \end{itemize}
+\item Text cite looks like this ``\textcite{latexcompanion}''.
+  \begin{itemize}
+  \item  made with {\color{PineGreen}\tt{}\lstinline#Text cite looks like this ``\textcite{latexcompanion}''.#}
+  \end{itemize}
+\item Simple cite looks like this \cite{texbook}
+  \begin{itemize}
+  \item made with {\color{PineGreen}\tt{}\lstinline#Simple cite looks like this \cite{texbook}#} 
+  \end{itemize}
+\item Paren cite looks like this \parencite{texbook}
+  \begin{itemize}
+  \item made with {\color{PineGreen}\tt{}\lstinline#Paren cite looks like this \parencite{texbook}#} 
+  \end{itemize}
+\item Text cite looks like this ``\textcite{texbook}''
+  \begin{itemize}
+  \item made with {\color{PineGreen}\tt{}\lstinline#Text cite looks like this ``\textcite{texbook}''#} 
+  \end{itemize}
+\end{itemize}
+\clearpage
+\printbibliography
+\end{document}
