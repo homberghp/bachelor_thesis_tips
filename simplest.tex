@@ -5,56 +5,18 @@
 \usepackage[colorlinks=true, citecolor=blue]{hyperref}
 
 \usepackage[
-%style=authoryear,
 backend=biber,
 hyperref=true,
 backref=true,
 ]{biblatex}
 
 \usepackage{listings}
-%\addbibresource{biblatex-examples.bib}
 \addbibresource{references.bib}
 
-% here the doc begins
-% \DeclareCiteCommand{\cite}
-%   {\usebibmacro{prenote}}
-%   {\usebibmacro{citeindex}%
-%    \printtext[bibhyperref]{\usebibmacro{cite}}}
-%   {\multicitedelim}
-%   {\usebibmacro{postnote}}
 
-% \DeclareCiteCommand*{\cite}
-%   {\usebibmacro{prenote}}
-%   {\usebibmacro{citeindex}%
-%    \printtext[bibhyperref]{\usebibmacro{citeyear}}}
-%   {\multicitedelim}
-%   {\usebibmacro{postnote}}
-
-% \DeclareCiteCommand{\parencite}
-%   {\usebibmacro{prenote}}
-%   {\usebibmacro{citeindex}%
-%    \printtext[bibhyperref]{[\usebibmacro{cite}]}}
-%   {\multicitedelim}
-%   {\usebibmacro{postnote}}
-
-% \makeatletter
-% \newrobustcmd*{\parentexttrack}[1]{%
-%   \begingroup
-%   \blx@blxinit
-%   \blx@setsfcodes
-%   \blx@bibopenparen#1\blx@bibcloseparen
-%   \endgroup}
-
-% \AtEveryCite{%
-%   \let\parentext=\parentexttrack%
-%   \let\bibopenparen=\bibopenbracket%
-%   \let\bibcloseparen=\bibclosebracket}
-% \makeatother
 \DefineBibliographyStrings{english}{
    backrefpage={cited  p.},
-%  backrefpage={},
    backrefpages={cited pp.}
- % backrefpages={}
 }
 
 \begin{document}
@@ -101,6 +63,6 @@ Note that below, in the textcite citation variant, you see that cite command pro
   \item made with {\color{PineGreen}\tt{}\lstinline#Text cite looks like this ``\textcite{texbook}''#} 
   \end{itemize}
 \end{itemize}
-\clearpage
+\clearpage\pagenumbering{gobble}
 \printbibliography
 \end{document}
