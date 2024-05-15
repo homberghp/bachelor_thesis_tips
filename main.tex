@@ -61,16 +61,6 @@
 \printbibliography[title={References}]
 
 % Add appendix
-%\begin{appendices}
-  \renewcommand{\thesection}{\Alph{section}}
-  \appendix
-  \def\chaptername{Appendix}
-  \markboth{Appendices}{}
-  \addcontentsline{toc}{part}{Appendices}
-  \include{appendix/macros}
-  \include{appendix/includelistings}
-  \include{appendix/pdfpages}
-
-%\end{appendices}
+\input{partials/appendix}
 %}
 \end{document}

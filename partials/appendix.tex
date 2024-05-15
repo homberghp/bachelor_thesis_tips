@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-\chapter{Title of appendix A}
-
-bla bla
-
-\chapter{Title of appendix B}
-
-bla bla
-=======
-\chapter{Include using pdfpages}
-
-
-\includepdf[scale=0.9,pages=-,pagecommand={\pagestyle{fancy}}]{appendix/sausageisnotsteel.pdf}
->>>>>>> a8696b1 (first version)
+\begin{appendices}
+  \renewcommand{\thesection}{\Alph{section}}
+  \appendix
+  \def\chaptername{Appendix}
+  \addcontentsline{toc}{part}{Appendices}
+  \include{appendix/macros}
+  \include{appendix/includelistings}
+  \include{appendix/pdfpages}
+\end{appendices}
+  
