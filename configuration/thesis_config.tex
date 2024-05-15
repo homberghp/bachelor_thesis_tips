@@ -181,7 +181,7 @@ backref=true,
 \usepackage{adjustbox}
 \usepackage[toc,page]{appendix}
 
-%\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+% chapter titles theme.
 \definecolor{gray75}{gray}{0.75}
 \newcommand{\hsp}{\hspace{20pt}}
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
@@ -207,19 +207,12 @@ backref=true,
   \renewcommand{\refname}{Referenties}
   \renewcommand{\bibname}{Referenties}
 }
-\addto\captionsenglish{%
-  \renewcommand\appendixname{Appendices}
-  \renewcommand\appendixpagename{Appendix}
-  \renewcommand{\refname}{References}
-  \renewcommand{\bibname}{References}
-}
 \addto\captionsgerman{%
   \renewcommand\appendixname{Anhänge}
   \renewcommand\appendixpagename{Anhang}
   \renewcommand{\refname}{Verweise}
   \renewcommand{\bibname}{Verweise}
 }
-%% to speed up building, include only what is in ./IncludeOnly.tex
 \providecommand\DefInfo[1]{ define \textbackslash{}#1 in file ``./infopage.txt''}
 \providecommand\documentname{\DefInfo{documentname}}
 \providecommand\studentname{\DefInfo{studentname}}
