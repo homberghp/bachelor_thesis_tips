@@ -67,7 +67,7 @@ backref=true,
 % define page layout
 \usepackage[a4paper,includemp,pdftex,
       top=20mm,left=20mm,
-      total={185mm,260mm},
+      total={180mm,260mm},
       includeheadfoot,
       marginparwidth=30mm,
 %      showframe
@@ -197,7 +197,7 @@ backref=true,
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{.5\baselineskip}
 \usepackage{adjustbox}
-\usepackage[toc,page]{appendix}
+\usepackage[toc,page,title,titletoc,header]{appendix}
 
 % chapter titles theme.
 \definecolor{gray75}{gray}{0.75}
@@ -219,9 +219,10 @@ backref=true,
   \fancyfoot{}
 }
 
+%% in the appendix the page numbers are per appendix chapter
 \fancypagestyle{appendix}{
   \fancyhf{}
-  \fancyhead[LE,RO]{\thechapter-\thepage}
+  \fancyhead[LE,RO]{\thepage}
 %  \fancyhead[RE,LO]{\chaptername\ \thechapter\ --\ \leftmark}
   \fancyfoot{}
 }
@@ -333,4 +334,11 @@ backref=true,
 
 \definecolor{codegray}{gray}{0.9}
 \newcommand{\code}[1]{\colorbox{codegray}{\texttt{#1}}}
+\usepackage{moreverb}
+\IfFileExists{wordcount.txt}{}{
+  % not exists
+  \immediate\write18{texcount  -inc -sum  -1 chapters/*.tex > wordcount.txt}
+}
+
+
 \InputIfFileExists{IncludeOnly.tex}{}{}

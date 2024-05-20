@@ -1,0 +1,39 @@
+\chapter{Counting words}
+
+It is mandatory to include the word count of your thesis in the
+information page. There are many constructs shown on the Internet but
+we choose to go for the simplest solution possible.
+
+\section{What to count}
+It is resonable to only count the words in the report proper.
+This implies only counting the words in the chapters, which is easy
+enough by using the \texttt{texcount} command with a \define{\gls{glob}} for the
+chapters: \texttt{chapters/*.tex}
+
+\section{How to count}
+\begin{lstlisting}[language=sh]
+texcount  -inc -sum  -1 chapters/*.tex > wordcount.txt
+\end{lstlisting}
+
+\section{When to count}
+To make sure that the word count in the file is updated in the
+whenever a chapter file changes, we use the Makefile.
+
+In the Makefile we make the \texttt{wordcount.txt} file dependent on the
+chapter files with this simple rule:
+
+\begin{lstlisting}[language=make,showtabs]
+wordcount.txt: chapters/*.tex
+	texcount  -inc -sum  -1 chapters/*.tex > wordcount.txt
+\end{lstlisting}
+
+and make the main.pdf file dependent on the \texttt{wordcount.txt} file as
+well.
+
+When that does not work for you, maybe, because you cannot or will not
+use \texttt{make} in your environment, then execute the
+\texttt{texcount} as given above in the terminal.
+
+Even simpler, delete the \texttt{wordcount.txt} file and run pdflatex
+again.
+

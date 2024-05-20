@@ -4,7 +4,7 @@
 
 LATEX=pdflatex -recorder -output-directory=out -synctex 15 -shell-escape
 BIBTEX=biber --output-directory=out --input-directory=out
-DEPENDENCIES=partials/* configuration/*.tex chapters/*.tex images/*.pdf images/*.pdf images/*.jpg appendix/* ./*.png tables/*.*
+DEPENDENCIES=partials/* configuration/*.tex chapters/*.tex images/*.pdf images/*.pdf images/*.jpg appendix/* ./*.png tables/*.* wordcount.txt
 
 all: main.pdf
 
@@ -26,6 +26,9 @@ fast.pdf: main.tex out $(DEPENDENCIES)
 out:
 	mkdir -p out/chapters out/partials out/appendix
 
+wordcount.txt: chapters/*.tex
+	texcount  -inc -sum  -1 chapters/*.tex > wordcount.txt
+
 clean:
-	rm -fr out *.aux *.log *.synctex *.bbl *.lof *.toc *.out *.bcf *.blg
+	rm -fr out *.aux *.log *.synctex *.bbl *.lof *.toc *.out *.bcf *.blg wordcount.txt
 	rm -f main.pdf
