@@ -7,6 +7,7 @@ The pdf has been created from a website using the ``print to pdf'' feature of th
 \end{lstlisting}
 
 If you make the documents intended for the appendix in \LaTeX\ too, you should of course simply $\backslash$include them in your report, as all but the last appendix here have been done.
-
-\includepdf[scale=0.9,pages=-,pagecommand={\pagestyle{fancy}}]{appendix/sausageisnotsteel.pdf}
+% \pagestyle{empty}
+%\includepdf[scale=0.9,pages=-,pagecommand={\pagestyle{fancy}}]{appendix/sausageisnotsteel.pdf}
+\includepdf[scale=0.9,pages=-,pagecommand={\thispagestyle{appendix}}]{appendix/sausageisnotsteel.pdf}
 

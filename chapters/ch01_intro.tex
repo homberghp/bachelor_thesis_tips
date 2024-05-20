@@ -2,6 +2,7 @@
 
 % quote text
 \begin{savequote}[15cm]
+  \vspace{-30mm}%
   \raggedleft
   \sffamily
   Introducing oneself properly is always hard.
@@ -22,6 +23,7 @@ write down some advice. Here you have it.
 
 \begin{wrapfigure}{r}{.25\textwidth}
   \includegraphics[width=.25\textwidth]{images/boreme.png}
+%  \caption{\label{fig:boredom}Boredom}
 \end{wrapfigure}
 The worst thing that can happen to me, the poor person that has to
 read your whole report from front page until the last page before the
@@ -36,11 +38,14 @@ paragraph of each chapters gives everything away?
 \section{Things to avoid}
 To keep the reader awake, and more importantly: interested, and appreciative of your work you should:
 \begin{Description}
-\item[Stay DRY] DO NOT repeat stuff.
-\item[Good titles] Think of good chapter and section titles. We read and use the table of content. If the chapter and section titles are good, they help explain the structure of the report, without any extra boring help.
-\item[Be brief] You do not get paid per written word, nor are we paid per word \textbf{read}.
+\item[Stay DRY] DO NOT repeat stuff.\gls{DRY}
+\item[Good titles] Think of good chapter and section titles. We read
+  and use the table of content. If the chapter and section titles are
+  good, they help explain the structure of the report, without any
+  extra boring help.\Margin{Good titles}
+\item[Be brief] You do not get paid per written word, nor are we paid per word \textbf{read}.\Margin{brief}
 \item[Use a storyline] Both in your report and in your
-  presentation. If you invent a persona anyway, use him or her as the
+  presentation. If you invent a \define{persona} anyway, use him or her as the
   protagonist to tell the store, and use him/her to explain stuff. 
 The story need not necessarily be true to the actual chronology of the
 time spent in your bachelor project, but should be logical story, in
@@ -70,10 +75,10 @@ In this way you will keep the reader in his flow, because he does not have to pa
 
 Also: By NOT repeating stuff, you have no chance of inconsistencies, because every paragraph is the only source of its truth.
 
-\section{TLDR;}
+\section{TLDR;}\gls{TLDR}
 
 In the remainder of this document you will see some tips and tricks to use when you write your report in \LaTeX,
-but the above and some things in the use of graphics also apply when you use \textbf{word} or some other text processing application. The quality of your report should not suffer from your choice of tools.
+but the above and some things in the use of graphics also apply when you use \textbf{Word} or some other text processing application. The quality of your report should not suffer from your choice of tools.
 So read those chapters as well. In particular when it is about adding pictures, listings, and tables.
 
 \section{Use a better technology}
@@ -98,20 +103,6 @@ simultaneously by several authors. Note that most of the settings for
 this document are set in the file \texttt{configuration/thesis\_config.tex}. 
 Look in that file too.
 
-%% This document consists of the following files
-%% \begin{enumerate}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
-%% \item \texttt{main.tex}
-%% \item \texttt{motivation.tex}
-%% \item \texttt{graphics.tex}
-%% \item \texttt{codelisting.tex}
-%% \item \texttt{poser.tex}
-%% \item \texttt{hello.c}
-%% \item \texttt{Makefile} and
-%% \item \texttt{mydefs.tex}
-%% \item \texttt{servlet3.png}, the pie chart
-%% \item \texttt{Diagram1.pdf}, the UML diagram
-%% \end{enumerate} 
-
 You are kindly advised to keep your lab logs in simple text
 files. These can be turned into latex files easily,
 which can be used to produce a nice looking report.
@@ -133,36 +124,9 @@ Java source files.
 \subsection{Hints for informatics (use version control)}
 In software projects, versioning is important. \LaTeX\ and \textsc{GIT}
 work nicely together here.
-%% By using the \LaTeX\ package \texttt{svn-multi} you can have svn+
-%% latex insert meta information about your files in the produced output,
-%% for instance in the page footers, as in this document.
-
-%% If you add the codes below at the top of each .tex file, these
-%% codes will be expanded/updated by svn \textit{on checkin}. 
-%% % do not expand keywords on  the example file
-%% \lstinputlisting{svnkeywords.head}
-%% You must also tell
-%% subversion to expand these keywords for those files with for each file
-%% the command:\\
-%% {\lstset{language=sh,numbers=none,morekeywords={svn,propset,keywords,filename},keywordstyle={\color{blue}}}
-%% \begin{lstlisting}[frame=single]
-%% svn propset svn:keywords "Id Author File Date LastChangeDate
-%%   Revision HeadURL Header"  filename
-%% \end{lstlisting}
-%% }
 
 To keep these version codes up to date, first check if your \LaTeX\  files compile,
 then add and commit them and do your final \LaTeX\  run. 
-
-%% To make the version codes of the files appear on the bottom line, have
-%% a look at the mydefs.tex file where the fancy headers and footers are defined.
-%% In group work you may also find it comfortable to create a file named
-%% \texttt{myauthors.tex} with contents like below, which is then
-%% input into the main or mydefs at the proper place and can translate
-%% student numbers from svn and you peerweb account into a humanly
-%% readable authors name.
-
-%% \lstinputlisting[frame=single]{myauthors.tex}
 
 %%% Local Variables: 
 %%% mode: latex

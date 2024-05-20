@@ -1,22 +1,23 @@
 \renewcommand\TheFile{ch04_graphics.tex}
 
-% \begin{savequote}[15cm]
-%   \raggedleft
-%   \sffamily
-% A picture is worth 1000 words
-%   \qauthor{Anonymous}
-% \end{savequote}
+\begin{savequote}[15cm]
+  \vspace{-30mm}
+  \raggedleft
+  \sffamily
+A picture is worth 1000 words
+  \qauthor{Anonymous}
+\end{savequote}
 \chapter{Graphics as easy as pie}
 \LaTeX, combined with pdf in \texttt{pdflatex}, supports the following
 graphic file types: pdf, png, jpeg or jpg and gif in that order of
 preference. Using the vector format pdf gives the added benefit that
 the graphic file can be scaled up and down without loss of quality.
-If you want to include bitmaps, try to get them in png format which
-is open and patent free. It has the advantage over jpeg or jpg that is is
+If you want to include bitmaps, try to get them in \gls{png} format which
+is open and patent free. It has the advantage over \gls{jpeg} or jpg that is is
 loss-less, so you do not see any artifact if you blow them up in your
 inclusion. Converting back from jpg to png is useless, because the
 damage is already done in the jpeg format. JPEG is excellent for
-photographs. For all the bitmap formats: try to get them at the
+photographs. That is also what it's name says. For all the bitmap formats: try to get them at the
 intended size with a resolution of 300dpi for printouts. 75 dpi is
 acceptable for screen reading.
   
@@ -27,7 +28,7 @@ acceptable for screen reading.
   \label{fig:pie}
 \end{figure}
 
-Many graphics packages can produce pdf files
+Many graphics packages can produce pdf files.
 Embedded postscript (file extension .eps) are also a good candidate,
 after converting them to pdf with the epstopdf tool. By the way: the
 native format of Adobe Illustrator (ai) is similar enough to eps, so

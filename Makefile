@@ -14,6 +14,7 @@ main.pdf: main.tex out $(DEPENDENCIES)
 	$(LATEX) main.tex
 	$(LATEX) main.tex
 	$(BIBTEX) main
+	makeglossaries -d out main
 	$(LATEX) main.tex
 	$(LATEX) main.tex
 	ln -sf out/*.pdf .

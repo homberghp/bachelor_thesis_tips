@@ -64,11 +64,19 @@ backref=true,
 
 % support multiple languages.
 \usepackage[\Languages]{babel}
+% define page layout
 \usepackage[a4paper,includemp,pdftex,
-      scale={0.9,0.8},
+      top=20mm,left=20mm,
+      total={185mm,260mm},
       includeheadfoot,
-      bindingoffset=1.5cm]{geometry}
+      marginparwidth=30mm,
+%      showframe
+      ]{geometry}
+      %%
+\newcommand\Margin[1]{\marginpar{\sffamily\textbf{#1}}}
+      
 \usepackage{layout}
+      
 \usepackage{fancybox}
 \usepackage[pdftex]{graphicx}
 \usepackage{longtable}
@@ -111,7 +119,7 @@ backref=true,
 \usepackage{listings}
 \lstset{numbers=right} % to get out of the way with document line numbers
 \definecolor{listinggray}{gray}{0.2}
-\definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
+\definecolor{lbcolor}{rgb}{0.95,0.98,0.98}
 
 %% settings for listings and code snippets.
 \lstset{
@@ -134,25 +142,26 @@ backref=true,
   identifierstyle=\ttfamily\bfseries\color{Black},
   keywordstyle=\color{Violet}\bfseries,%[rgb]{0,0,1},
   commentstyle=\color{Sepia},
+  xleftmargin=3.4pt, %% small margins
+  xrightmargin=7.4pt, %% margin into marginparsep
   stringstyle=\color[rgb]{0.627,0.126,0.941}
 }
 
 %% to show bibtex entries in listintgs examples chapter.
 \makeatother
 \lstdefinelanguage{BibTeX}
-  {keywords={%
-      @article,@book,@collectedbook,@conference,@electronic,@ieeetranbstctl,%
-      @inbook,@incollectedbook,@incollection,@injournal,@inproceedings,%
-      @manual,@mastersthesis,@misc,@patent,@periodical,@phdthesis,@preamble,%
-      @proceedings,@standard,@string,@techreport,@unpublished%
-      },
-   comment=[l][\itshape]{@comment},
-   sensitive=false,
-  }
+{keywords={%
+    @article,@book,@collectedbook,@conference,@electronic,@ieeetranbstctl,%
+    @inbook,@incollectedbook,@incollection,@injournal,@inproceedings,%
+    @manual,@mastersthesis,@misc,@patent,@periodical,@phdthesis,@preamble,%
+    @proceedings,@standard,@string,@techreport,@unpublished%
+  },
+  comment=[l][\itshape]{@comment},
+  sensitive=false,
+}
 
 \usepackage[final]{pdfpages}
 
-\usepackage[toc,acronym]{glossaries}
 \usepackage[pagewise,mathlines,displaymath]{lineno}
 %\setpagewiselinenumbers
 \modulolinenumbers[3]
@@ -166,6 +175,7 @@ backref=true,
   citecolor=PineGreen,
   urlcolor=RoyalPurple,
 }
+\usepackage[toc,acronym,xindy]{glossaries-extra}
 \usepackage{cleveref}[2012/02/15]
 \crefformat{footnote}{#2\footnotemark[#1]#3}
 
@@ -195,6 +205,7 @@ backref=true,
 
 % this alters "before" spacing (the second length argument) to 0
 \titlespacing*{\chapter}{0pt}{0pt}{40pt}
+\titlespacing{\chapter}{0pt}{-25mm}{40pt}
 
 \fancypagestyle{fancy}{%
   \fancyhf{}
@@ -202,10 +213,18 @@ backref=true,
 }
 
 \fancypagestyle{chapter-header-style}{
-	\fancyhead[LE,RO]{\thepage}
-	\fancyhead[RE,LO]{\chaptername\ \thechapter\ --\ \leftmark}
-        \fancyfoot{}
+  \fancyhead[LE,RO]{\thepage}
+  \fancyhead[RE,LO]{\chaptername\ \thechapter\ --\ \leftmark}
+  \fancyfoot{}
 }
+
+\fancypagestyle{appendix}{
+  \fancyhf{}
+  \fancyhead[LE,RO]{\thechapter-\thepage}
+%  \fancyhead[RE,LO]{\chaptername\ \thechapter\ --\ \leftmark}
+  \fancyfoot{}
+}
+
 \pagestyle{fancy}
 
 \renewcommand{\chaptermark}[1]{%
