@@ -45,6 +45,12 @@
 %% This style depends on 'sortname' and 'shorthand' fields in the bib file.
 %% This gives you control on what is shown in the labels.
 %% If you ommit the shorthand, the styles fall back to a numeric label
+
+% load early
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%% biblatex options, defualt to numeric but also support
+%% shorthand and sortname keys in bib file bibliography.
 \usepackage[
 backend=biber,
 hyperref=true,
@@ -56,13 +62,10 @@ backref=true,
 }
 % end citation bibliography style.
 
-
 % support multiple languages.
 \usepackage[\Languages]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 \usepackage[a4paper,includemp,pdftex,
-      scale={0.9,0.9},
+      scale={0.9,0.8},
       includeheadfoot,
       bindingoffset=1.5cm]{geometry}
 \usepackage{layout}
@@ -76,7 +79,6 @@ backref=true,
 \usepackage{amsmath}
 \usepackage{textcomp}
 \usepackage{wrapfig}
-\usepackage{fancyhdr}
 \usepackage{varioref}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[avantgarde]{quotchap}
@@ -99,7 +101,9 @@ backref=true,
   amsmath,
   float,
   chngpage,
-  colortbl,times
+  colortbl,
+  times,
+  csquotes,
 }
 
 \usepackage[yyyymmdd]{datetime}
@@ -109,28 +113,31 @@ backref=true,
 \definecolor{listinggray}{gray}{0.2}
 \definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
 
+%% settings for listings and code snippets.
 \lstset{
-%	backgroundcolor=\color{lbcolor},
-	tabsize=4,
-%	rulecolor=,
-	language=java,
-        basicstyle=\scriptsize,
-        upquote=true,
-        aboveskip={1.5\baselineskip},
-        columns=fixed,
-        showstringspaces=false,
-        extendedchars=true,
-        breaklines=true,
-        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-        frame=single,
-        showtabs=false,
-        showspaces=false,
-        showstringspaces=false,
-        identifierstyle=\ttfamily\bfseries\color{Black},
-        keywordstyle=\color{Violet}\bfseries,%[rgb]{0,0,1},
-        commentstyle=\color{Sepia},
-        stringstyle=\color[rgb]{0.627,0.126,0.941}
+  backgroundcolor=\color{lbcolor},
+  tabsize=4,
+  %	rulecolor=,
+  language=java,
+  basicstyle=\scriptsize,
+  upquote=true,
+  aboveskip={1.5\baselineskip},
+  columns=fixed,
+  showstringspaces=false,
+  extendedchars=true,
+  breaklines=true,
+  prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+  frame=single,
+  showtabs=false,
+  showspaces=false,
+  showstringspaces=false,
+  identifierstyle=\ttfamily\bfseries\color{Black},
+  keywordstyle=\color{Violet}\bfseries,%[rgb]{0,0,1},
+  commentstyle=\color{Sepia},
+  stringstyle=\color[rgb]{0.627,0.126,0.941}
 }
+
+%% to show bibtex entries in listintgs examples chapter.
 \makeatother
 \lstdefinelanguage{BibTeX}
   {keywords={%
@@ -162,10 +169,6 @@ backref=true,
 \usepackage{cleveref}[2012/02/15]
 \crefformat{footnote}{#2\footnotemark[#1]#3}
 
-\addtolength\headwidth\marginparwidth
-\addtolength\headwidth\marginparsep
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{.5\baselineskip}
 
 \usepackage{lipsum}
 \usepackage{metainfo}
@@ -178,6 +181,10 @@ backref=true,
 \usepackage[nottoc]{tocbibind}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
+\addtolength\headwidth\marginparwidth
+\addtolength\headwidth\marginparsep
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.5\baselineskip}
 \usepackage{adjustbox}
 \usepackage[toc,page]{appendix}
 
@@ -189,14 +196,17 @@ backref=true,
 % this alters "before" spacing (the second length argument) to 0
 \titlespacing*{\chapter}{0pt}{0pt}{40pt}
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot[C]{\thepage}
+\fancypagestyle{fancy}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+}
 
 \fancypagestyle{chapter-header-style}{
 	\fancyhead[LE,RO]{\thepage}
 	\fancyhead[RE,LO]{\chaptername\ \thechapter\ --\ \leftmark}
+        \fancyfoot{}
 }
+\pagestyle{fancy}
 
 \renewcommand{\chaptermark}[1]{%
   \markboth{#1}{}}
