@@ -13,10 +13,10 @@ graphic file types: pdf, png, jpeg or jpg and gif in that order of
 preference. Using the vector format pdf gives the added benefit that
 the graphic file can be scaled up and down without loss of quality.
 If you want to include bitmaps, try to get them in \define{\gls{png}} format which
-is open and patent free. It has the advantage over \gls{jpeg} or jpg that is is
+is open and patent free. It has the advantage over jpeg or jpg that is is
 loss-less, so you do not see any artifact if you blow them up in your
 inclusion. Converting back from jpg to png is useless, because the
-damage is already done in the jpeg format. JPEG is excellent for
+damage is already done in the jpeg format. \define{\gls{jpeg}} is excellent for
 photographs. That is also what it's name says. For all the bitmap formats: try to get them at the
 intended size with a resolution of 300dpi for printouts. 75 dpi is
 acceptable for screen reading.
@@ -65,7 +65,7 @@ If latex cannot fit the diagram on this page
 \end{wrapfigure}
 If the documentation you write is a design document of some software
 package, you may want to include design diagrams.
-No software engineering without a UML diagrams\ldots.
+No software engineering without a \define{\gls{UML}} diagrams\ldots.
 You can see one generated with ``dia'', a vector drawing program that
 understands the UML in figure~\ref{fig:classdiagram}
 ~\vpageref{fig:classdiagram}. This diagram is 'wrapped' in a \Code{wrapfigure} environment, so the text may flow around it
@@ -87,20 +87,21 @@ get all details right. Or with \Code{pdfcrop} which typically comes with your \L
   \caption{You have been warned, NO PNG}
 \end{figure}
 
-\begin{wrapfigure}{r}{.4\textwidth}
-  \includegraphics[width=.4\textwidth]{images/Da_Vinci_Vitruve_Luc_Viatour.jpg}
-  \caption{Left/right is has, up/down is inheritance}
-\end{wrapfigure}
 The picture above is wrong on many fronts.
 \begin{Itemize}
 \item it uses png as image format, where a vector format is provided by the modeling application Visual Paradigm.
-  However when you like a pixelated world such as in the game MineCraft, you might feel at home if you zoom in a bit.
+  However when you like a pixelated world such as in the game \gls{minecraft}, you might feel at home if you zoom in a bit.
 \item The arrows point in all directions, which is bad style. A proper UML class diagram should be stylish to improve comprehensibility, as it is recognizable at a glance. Think of Da Vinci's Vitruvian man.
 \item It has the VPP blues, that is the colours used are completely non-functional, and also impair readability because the used colour lowers the contract.
 \end{Itemize}
 
 Look on the next page how it is done properly.
-\clearpage
+
+% \begin{wrapfigure}{r}{.4\textwidth}
+%   \includegraphics[width=.4\textwidth]{images/Da_Vinci_Vitruve_Luc_Viatour.jpg}
+%   \caption{Left/right is has, up/down is inheritance (jpeg image)}
+% \end{wrapfigure}
+%\clearpage
 \begin{figure}
   \includegraphics[width=\linewidth]{images/HWIO.pdf}
 	\caption{UML made with Visual Paradigm, export to svg and then adapted with inkscape and end exported to pdf}
