@@ -15,7 +15,7 @@
   \qauthor{Mantra of \TeX-ies}
 \end{savequote}
 \chapter{Mathematics to show off}
-% first som definitions
+% first some definitions
 % some personal command definitions as examples:
 \newcommand{\half}{\frac{1}{2}}
 \newcommand{\eps}{\varepsilon}
@@ -26,13 +26,13 @@
 \newcommand{\der}[2]{\frac{\partial {#1}}{\partial {#2}}}
 
 Here, you see how a mathematical equation can be generated in line, for
-instance $f(x) = \frac{1}{1+25 x^2}$.
+instance, $f(x) = \frac{1}{1+25 x^2}$.
 The \verb+$+-symbols enclose the formula.
 As a so-called displayed formula, it would look like\premathpar
 \begin{displaymath}
   f(x) = \frac{1}{1+25 x^2}.
 \end{displaymath}
-It is customary that mathematical functions are \emph{not} set in math-italics,
+It is customary that mathematical functions are \emph{not} set in math italics,
 so \LaTeX\ has the basic ones pre-defined; you should use the commands
 \verb+\cos+, \verb+\exp+, etc.\ to get $f_1(x) = \cos x$,
 $f_2(x) = - e^{-xt} \sin^2 x$, etc.
@@ -72,7 +72,7 @@ A matrix $A \in \mathrm{R}^{m \times n}$ could be defined by\premathpar
       \end{array} \right)
 \end{displaymath}
 Here, the word \verb+dots+ in the commands stands for an ellipsis
-(i.e., three dots) placed horizontally in the centre (\verb+\cdots+),
+(i.e., three dots) placed horizontally in the center (\verb+\cdots+),
 vertically (\verb+\vdots+), or diagonally (\verb+\ddots+); what is
 not mentioned is \verb+\ldots+ for horizontal dots at the baseline.
 Use the baseline or central version as appropriate, for instance\premathpar
@@ -85,8 +85,8 @@ Some more comments on the matrix are needed, I suppose:
 The \verb+\left(+ and \verb+\right)+ create the variable-sized parentheses
 around the actual array of terms. You can also use \verb+\left[+ and
 \verb+\right]+, or \verb+\left\{+ and \verb+\right\}+ in other situations.
-The actual array arrangement is organised by the \verb+array+ environment;
-you need the arguments \verb+ccccc+ to indicate that there are five columns
+The actual array arrangement is accomplished by the \verb+array+ environment.
+The argument \verb+ccccc+ indicates that there are five columns
 and you want the entries centered (``c''), other options are left (``l'')
 and right (``r''). Notice how \verb+&+ separate columns and \verb+\\+
 the rows.
