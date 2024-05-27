@@ -1,4 +1,6 @@
-\newcommand\itemcell[1]{%
+% macros used in results table developed with Torben Westphalen.
+
+\providecommand\itemcell[1]{%
   %\mbox{% uncomment for debug 
   \begin{minipage}[t]{\linewidth}%
       \begin{itemize}[leftmargin=3.5ex]%
@@ -8,8 +10,7 @@
   %}% uncomment
 }
 
-
-\newcommand\headcell[1]{%
+\providecommand\headcell[1]{%
   \begin{minipage}[c]{\linewidth}
     \vspace{.2\baselineskip}%
     \raggedright%
@@ -17,7 +18,7 @@
   \end{minipage}\vspace{.4\baselineskip}%
 }
 
-\newcommand\firstcell[1]{%
+\providecommand\firstcell[1]{%
   \cellcolor{Gray}%
   \begin{minipage}[c]{\linewidth}%
     \vspace{.2\baselineskip}%
@@ -26,13 +27,16 @@
   \end{minipage}\vspace{.4\baselineskip}%
 }
 
-\newcommand\textcell[1]{%
+\providecommand\textcell[1]{%
   \fbox{%
     \begin{minipage}[t]{\linewidth}%
       \raggedright%
       #1
   \end{minipage}}\vspace{.4\baselineskip}%
 }
+\usepackage{longtable}
+
+%% some widgets used in the table.
 \newlength{\BulletSize}
 \setlength{\BulletSize}{1.5ex}
 \definecolor{Gray}{gray}{0.9} % color used in table borders
