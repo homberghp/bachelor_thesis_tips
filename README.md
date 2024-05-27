@@ -7,12 +7,11 @@ Many thanks to [Jurian Janssen](https://github.com/Woeler) for setting this up.
 
 ## Get it running automatically via CI on github
 
-Although possible, it has the follwinf drawbacks:
+Although possible github actions, has the following drawbacks:
 
 * It increases your waiting time when doing edit compile verify, which is quite normal when working with source code.
-* It is more wasteful, energy wise. Uploading to the remote machine, have the server compile and get the result back costs cpu cycles in the whole chain. It may also cost you
-your credits on the server infra structure.
-
+* It is more wasteful, energy wise. Uploading to the remote machine, have the server compile and get the result back costs cpu cycles in the whole chain. It may also cost you your credits on the server infra structure.
+* It will eat up you github free tokens. This even more serious when you are using shared tokens.
 
 If you stil insist, you can use your github repository as automated build system. It can also build your PDF file automatically.
 
@@ -40,7 +39,7 @@ Another option is to use this as template repository, just click on **use htis t
 
 ## Get it running manually on your machine
 
-This manual building can be done also if you forked it or created an own repository.
+This manual building can be done also if you forked it, or created an own repository.
 
 - Cloning the repository
 - then build it
@@ -54,17 +53,12 @@ pdflatex main.tex
 ```
 make
 ```
-On linux, mac install texlive and you are good to go.
+On Linux, Mac or Windows install texlive and you are good to go. Using it in combination with git-bash and gnu Make allows you to use make.
 
 ## Get it running on windows
-- Install MiKTeX    https://miktex.org/ HOM: use TexLive.
-- Install Perl      http://strawberryperl.com/
+- Install TexLive  https://tug.org/texlive/
+- Install Perl     http://strawberryperl.com/
 - Then build it.
-
-### Build with windows via latexmk
-```
-latexmk -pdf
-```
 
 ### Build without latex installation.
 
@@ -77,3 +71,4 @@ you latex commands inside the container. The Makefile in this directory shows ho
 You may enable line numbering by creating an empty file in the root directory named `linenumberingOn.tex`.
 
 You can find the resulting [main.pdf](docs/main.pdf) in the docs directory.
+
