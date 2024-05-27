@@ -24,10 +24,7 @@
 %% citation and bibliography style.
 %% This style depends on 'sortname' and 'shorthand' fields in the bib file.
 %% This gives you control on what is shown in the labels.
-%% If you ommit the shorthand, the styles fall back to a numeric label
-
-%% biblatex options, defualt to numeric but also support
-%% shorthand and sortname keys in bib file bibliography.
+%% If you ommit the shorthand, the styles fall back to a numeric label.
 \usepackage[
 backend=biber,
 hyperref=true,
@@ -139,11 +136,16 @@ backref=true,
 
 \usepackage[final]{pdfpages}
 
+% definitions for line numbers modulo 3, tiny gray
 \usepackage[pagewise,mathlines,displaymath]{lineno}
 %\setpagewiselinenumbers
 \modulolinenumbers[3]
 \renewcommand{\linenumberfont}{\normalfont\tiny\color{gray}}
-\usepackage{hyperref}
+\IfFileExists{linenumberingOn}{\linenumbers}{}
+%% end line numbers def
+
+%% hyperref usage, link colors 
+\usepackage[unicode]{hyperref}
 \hypersetup{
   colorlinks=true,
   colorlinks=true,
@@ -151,32 +153,42 @@ backref=true,
   filecolor=DarkOrchid,
   citecolor=PineGreen,
   urlcolor=RoyalPurple,
+  pdfinfo={
+    Title={\documentname},
+    Subject={\subject},
+    Author={\studentname\ \snumber},
+    Keywords={\keywords},
+  }
 }
+%%  pick up definitions from info page
+
+%% end hyperref
 \usepackage[toc,acronym,xindy]{glossaries-extra}
 \setabbreviationstyle[acronym]{short-long}
+
+%%
+
 \usepackage{cleveref}[2012/02/15]
 \crefformat{footnote}{#2\footnotemark[#1]#3}
 
-
+%% add blindtext for demo
 \usepackage{lipsum}
 \usepackage{metainfo}
 \providecommand{\MineOnlyStart}{}
 \providecommand{\MineOnlyEnd}{}
 
 \input{configuration/macros}
+\input{configuration/longtablemacros}
 
 %\usepackage{natbib}
 \usepackage[nottoc]{tocbibind}
 \usepackage{titlesec}
-\usepackage{fancyhdr}
-\addtolength\headwidth\marginparwidth
-\addtolength\headwidth\marginparsep
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{.5\baselineskip}
 \usepackage{adjustbox}
 \usepackage[toc,page,title,titletoc,header]{appendix}
 
-% chapter titles theme.
+% chapter section titles theme.
 \definecolor{gray75}{gray}{0.75}
 \newcommand{\hsp}{\hspace{20pt}}
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
@@ -185,6 +197,10 @@ backref=true,
 \titlespacing*{\chapter}{0pt}{0pt}{40pt}
 \titlespacing{\chapter}{0pt}{-25mm}{40pt}
 
+%% define local fancy header styles
+\usepackage{fancyhdr}
+\addtolength\headwidth\marginparwidth
+\addtolength\headwidth\marginparsep
 \fancypagestyle{fancy}{%
   \fancyhf{}
   \fancyfoot[C]{\thepage}
@@ -223,6 +239,7 @@ backref=true,
 }
 \providecommand\DefInfo[1]{ define \textbackslash{}#1 in file ``./infopage.txt''}
 \providecommand\documentname{\DefInfo{documentname}}
+\providecommand\subject{\DefInfo{subject}}
 \providecommand\studentname{\DefInfo{studentname}}
 \providecommand\place{\DefInfo{place}}
 \providecommand\snumber{\DefInfo{snummer}}
@@ -239,7 +256,7 @@ backref=true,
 \providecommand\examiner{\DefInfo{examiner}}
 \providecommand\externalexpert{\DefInfo{externalexpert}}
 \providecommand\hasnda{\DefInfo{hasnda}}
-
+\providecommand\keywords{\DefInfo{\keywords}}
 % This macro '\define' puts the argument in em 
 % and in boldface in the margin.
 \providecommand{\define}[1]{% 1 argument
@@ -253,59 +270,6 @@ backref=true,
     p{#1}%
 }
 
-\newcommand\itemcell[1]{%
-  %\mbox{% uncomment for debug 
-  \begin{minipage}[t]{\linewidth}%
-      \begin{itemize}[leftmargin=3.5ex]%
-        #1
-      \end{itemize}%
-  \end{minipage}\vspace{.4\baselineskip}%
-  %}% uncomment
-}
-
-
-\newcommand\headcell[1]{%
-  \begin{minipage}[c]{\linewidth}
-    \vspace{.2\baselineskip}%
-    \raggedright%
-    \textbf{#1}
-  \end{minipage}\vspace{.4\baselineskip}%
-}
-
-\newcommand\firstcell[1]{%
-  \cellcolor{Gray}%
-  \begin{minipage}[c]{\linewidth}%
-    \vspace{.2\baselineskip}%
-    \raggedright%
-    \textbf{#1}
-  \end{minipage}\vspace{.4\baselineskip}%
-}
-
-\newcommand\textcell[1]{%
-  \fbox{%
-    \begin{minipage}[t]{\linewidth}%
-      \raggedright%
-      #1
-  \end{minipage}}\vspace{.4\baselineskip}%
-}
-\newlength{\BulletSize}
-\setlength{\BulletSize}{1.5ex}
-\definecolor{Gray}{gray}{0.9} % color used in table borders
-\newlength{\TabColumnWidth} % for tables
-\newcommand\CheckMarkGreen[1]{\includegraphics[height=#1]{images/Check_Green_White.pdf}\hspace{2pt}}
-\newcommand\CMark{\raisebox{-.1\BulletSize}{\CheckMarkGreen{\BulletSize}}}
-\newcommand\CrossMarkRed[1]{\includegraphics[height=#1]{images/Cross_red_circle.pdf}\hspace{2pt}}
-\newcommand\XMark{\raisebox{-.1\BulletSize}{\CrossMarkRed{\BulletSize}}}
-\newcommand\WarningMarkYellow[1]{\includegraphics[height=#1]{images/Alert_Yellow_White.pdf}\hspace{2pt}}
-\newcommand\WMark{\raisebox{-.1\BulletSize}{\WarningMarkYellow{\BulletSize}}}
-\newcommand\FirstCell[1]{\cellcolor{Gray}\thead{#1}}
-\newcommand\URLIcon[1]{\includegraphics[height=#1]{images/URL.pdf}\hspace{2pt}}
-\newcommand\UMark{\raisebox{-.1\BulletSize}{\URLIcon{\BulletSize}}}
-\newcommand\itemC{\item[\CMark]}
-\newcommand\itemX{\item[\XMark]}
-\newcommand\itemW{\item[\WMark]}
-\newcommand\itemU{\item[\UMark]}
-\newcommand\MyURL[2]{\url{#1}{\UMark #1}}
 \usepackage[avantgarde]{quotchap}
 \renewcommand\chapterheadstartvskip{\vspace*{-5\baselineskip}}
 

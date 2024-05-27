@@ -1,5 +1,6 @@
 %% set the proper data here.
 \def\documentname{Towards a better Bachelor Thesis}
+\def\subject{Examples of proper \LaTeX\ usage for a Thesis\\With general tips on file formats for diagrams and tables}
 \def\studentname{Pietje Bell}
 \def\snumber{1234567}
 \def\place{Venlo}
@@ -16,4 +17,5 @@
 \def\examiner{Dr V. Strict}
 \def\externalexpert{A. Einstein}
 \def\hasnda{No}
+\def\keywords{Thesis Structure DRY vector format}
 
