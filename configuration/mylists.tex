@@ -1,0 +1,25 @@
+% my own Itemize, Enumerate, and Description : a bit less spacy then the default
+\newenvironment{Itemize} {
+	\begin{itemize}{}%
+		\setlength\topsep{0ex}%
+		\setlength\parskip{0ex}%
+		\setlength\partopsep{0em}%
+		\setlength\parsep{0em}%
+		\setlength\itemsep{0em}%
+	}{\end{itemize}
+}
+\newenvironment{Enumerate}{
+	\begin{enumerate}
+		\setlength{\itemsep}{1pt}
+		\setlength{\parskip}{0pt}
+		\setlength{\parsep}{0pt}}
+	{\end{enumerate}
+}
+
+\newenvironment{Description}{
+	\begin{description}
+		\setlength{\itemsep}{1pt}
+		\setlength{\parskip}{0pt}
+		\setlength{\parsep}{0pt}}
+	{\end{description}
+}

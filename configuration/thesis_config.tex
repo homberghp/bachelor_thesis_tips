@@ -16,39 +16,16 @@
 \providecommand\Languages{dutch,ngerman,english}
 \documentclass[a4paper,11pt]{report}
 % my own Itemize, Enumerate, and Description : a bit less spacy then the default
-\newenvironment{Itemize} {
-  \begin{itemize}{}%
-    \setlength\topsep{0ex}%
-    \setlength\parskip{0ex}%
-    \setlength\partopsep{0em}%
-    \setlength\parsep{0em}%
-    \setlength\itemsep{0em}%
-  }{\end{itemize}
-}
-\newenvironment{Enumerate}{
-  \begin{enumerate}
-    \setlength{\itemsep}{1pt}
-    \setlength{\parskip}{0pt}
-    \setlength{\parsep}{0pt}}
-  {\end{enumerate}
-}
-
-\newenvironment{Description}{
-  \begin{description}
-    \setlength{\itemsep}{1pt}
-    \setlength{\parskip}{0pt}
-    \setlength{\parsep}{0pt}}
-  {\end{description}
-}
+\input{configuration/mylists}
+% load early
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 %% citation and bibliography style.
 %% This style depends on 'sortname' and 'shorthand' fields in the bib file.
 %% This gives you control on what is shown in the labels.
 %% If you ommit the shorthand, the styles fall back to a numeric label
 
-% load early
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 %% biblatex options, defualt to numeric but also support
 %% shorthand and sortname keys in bib file bibliography.
 \usepackage[
@@ -70,7 +47,7 @@ backref=true,
       total={180mm,260mm},
       includeheadfoot,
       marginparwidth=30mm,
-%      showframe
+%      showframe % for debugging
       ]{geometry}
       %%
 \newcommand\Margin[1]{\marginpar{\sffamily\textbf{#1}}}
