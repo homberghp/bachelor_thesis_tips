@@ -19,10 +19,8 @@ you use to organize you bibliography. The files with these data are
 called .bib files.
 
 \section{Bib\LaTeX}
-Bibtex is the traditional way of using citations and creating a bibliography, but its
-role has all but been taken over by the more modern Bib\LaTeX.
-Both are equally simple to use for the most common use. For each reference that you want to use in your report
-you should have a definition like below. Look in the \texttt{references.bib} file for more examples.
+Bibtex is the traditional way of using citations and creating a bibliography, but its role has all but been taken over by the more modern Bib\LaTeX.
+Both are equally simple to use for the most common use. For each reference that you want to use in your report you should have a definition like below. Look in the file \texttt{references.bib} for more examples.
 
 For instance if your bib contains this entry for \texttt{Nobody}:
 \begin{lstlisting}[language=BibTeX]
@@ -38,37 +36,34 @@ For instance if your bib contains this entry for \texttt{Nobody}:
 Then citing Nobody~\parencite{Nobody06} is easy as
 pie:\lstinline|\parencite{Nobody06}|
 
-textcite ``\textcite{Nobody06}'', cite \cite{Nobody06}, parencite \parencite{Nobody06}
+With textcite it looks like \textcite{Nobody06}, with cite like \cite{Nobody06}, and with parencite \parencite{Nobody06}.
 
 Then you need to add one compilation step to your normal workflow:
 
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=sh,morekeywords={biber}]
 $ pdflatex myarticle
 $ biber myarticle
 $ pdflatex myarticle
 $ pdflatex myarticle
 \end{lstlisting}
 
-You can of course easily add that to the makefile introduced in an
-earlier chapter.
+You can of course easily add that to the makefile introduced in \vref{sec:makefiles}.
 
-Bibtex is the standard you want to use if preparing an article of a
+BibLaTeX is the standard you want to use if preparing an article of a
 journal or magazine. The journal typically also prescribes a specific
 bibliography style (defined in a .bst file), which is most likely
-already define for or by that journal
+already define for or by that journal.
 
 \subsection{BibLaTeX and Biber}
 
-A bit more modern is biblatex, which has a much simpler definition
-format for bst files. The is a separate \textbf{biber} program to do
+A bit more modern then bibtex is biblatex, which has a much simpler definition
+format for bst files. There is a separate \textbf{biber} program to do
 the processing instead of the bibtex run.
 I have used biber in this version of this latex sample. \parencite{biblatexsite}.
 
 \section{What style to choose}
 
-Avoiding complexity is always a good idea. If you want to support the reader in the easiest least complex way for your as a author, choose a numeric citation style,
-like the ieee style. But hey those people a beta, the same as a software engineer.
-
+Avoiding complexity is always a good idea. If you want to support the reader in the easiest and least complex way for your as a author, choose a numeric citation style, like the ieee style. But hey, the people at IEEE are a betas, the same as a software engineer.
 
 It appears that Fontys Venlo promotes the so called Harvard style, but that has three issues:
 \begin{Enumerate}
@@ -93,7 +88,7 @@ settings used in this report and with a bibliography that uses the
 fields \texttt{shorthand} and \texttt{sortname} like below
 in~\vref{bib:companion} to give the author control on both what is
 used in either citation and the bibliography and also the sorting
-applied in the bibliography. This provides the best of both worlds.
+applied in the bibliography. Since the shorthand defines what is shown in the citation, it also lets you control per citation what is show, title, author, or some other mnemonic name. If you want a short hand for the Patterns Book by Gamma, Helm, Johnson, and Vlissides the textcite looks like this: \textcite{gamma1994design}, and by following the link you can have a look in the references to see what it makes of the label and the reference.
 
 \lstset{emph={shorthand,sortname},emphstyle={\colorbox{Yellow}}}
 \begin{lstlisting}[language=BibTeX,caption={\label{bib:companion}Using \texttt{shorthand} for label and \texttt{sortname}for sorting}]
@@ -108,7 +103,7 @@ applied in the bibliography. This provides the best of both worlds.
 \end{lstlisting}
 
 With these addition, and the biblatex configuration in \vref{snip:bibconfig}, you get the more pleasing bibliography in \vref{fig:fontysharvard}
-which hase back references as an additional bonus. These will not work in the image above, but do work with this \textcite{latexcompanion} citation.
+which has back references as an additional bonus. These will not work in the image above, but does work with this \textcite{latexcompanion} citation.
 
 A screenshot (still ugly, but useful for once) in \vref{fig:activecitation} shows what that looks like in the pdf-viewer \textbf{evince} on a ubuntu box.
 
