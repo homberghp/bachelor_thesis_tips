@@ -30,5 +30,6 @@ wordcount.txt: chapters/*.tex
 	texcount  -inc -sum  -1 chapters/*.tex > wordcount.txt
 
 clean:
-	rm -fr out *.aux *.log *.synctex *.bbl *.lof *.toc *.out *.bcf *.blg wordcount.txt
+	rm -fr out *.aux *.log *.synctex *.bbl *.lof *.toc *.out *.bcf *.blg wordcount.txt main.acn main.glo main.lot\
+		main.run.xml *.synctex* main.xdy  
 	rm -f main.pdf
